@@ -1,0 +1,78 @@
+For wire_length = 20
+	 Potential:300 Current:140 
+	 Resist: 2.142857 
+	 Potential:790 Current:370 
+	 Resist: 2.135135 
+	 Potential:420 Current:200 
+	 Resist: 2.100000 
+	 Potential:650 Current:300 
+	 Resist: 2.166667 
+	 Potential:1150 Current:540 
+	 Resist: 2.129630 
+	 Potential:1530 Current:720 
+	 Resist: 2.125000 
+	 Potential:220 Current:100 
+	 Resist: 2.200000 
+	 Potential:480 Current:225 
+	 Resist: 2.133333 
+	 Potential:700 Current:330 
+	 Resist: 2.121212 
+	 Potential:530 Current:250 
+	 Resist: 2.120000 
+
+
+For wire length = 20
+	 Mean value of resistance: 2.137383 
+
+For wire_length = 30
+	 Potential:760 Current:235 
+	 Resist: 3.234043 
+	 Potential:1040 Current:325 
+	 Resist: 3.200000 
+	 Potential:320 Current:100 
+	 Resist: 3.200000 
+	 Potential:480 Current:150 
+	 Resist: 3.200000 
+	 Potential:1500 Current:475 
+	 Resist: 3.157895 
+	 Potential:1750 Current:550 
+	 Resist: 3.181818 
+	 Potential:1280 Current:400 
+	 Resist: 3.200000 
+	 Potential:1120 Current:350 
+	 Resist: 3.200000 
+	 Potential:950 Current:300 
+	 Resist: 3.166667 
+	 Potential:630 Current:195 
+	 Resist: 3.230769 
+
+
+For wire length = 30
+	 Mean value of resistance: 3.197119 
+
+For wire_length = 50
+	 Potential:500 Current:95 
+	 Resist: 5.263158 
+	 Potential:750 Current:150 
+	 Resist: 5.000000 
+	 Potential:1050 Current:200 
+	 Resist: 5.250000 
+	 Potential:1320 Current:250 
+	 Resist: 5.280000 
+	 Potential:1630 Current:305 
+	 Resist: 5.344262 
+	 Potential:1870 Current:350 
+	 Resist: 5.342857 
+	 Potential:2150 Current:410 
+	 Resist: 5.243902 
+	 Potential:2630 Current:500 
+	 Resist: 5.260000 
+	 Potential:2990 Current:570 
+	 Resist: 5.245614 
+	 Potential:3390 Current:645 
+	 Resist: 5.255814 
+
+
+For wire length = 50
+	 Mean value of resistance: 5.248561 
+
