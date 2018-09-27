@@ -3,16 +3,16 @@
 #include <malloc.h>
 #include <stdlib.h>
 
-FILE *fin;
+FILE *fin;//file data reservation
 FILE *fout;
 
-int wire_length[3] = {20, 30, 50};
+int wire_length[3] = {20, 30, 50};//dynamic and static massives
 int *e_current = NULL;
 int *e_potential = NULL;
 float *r = NULL;
 float res[3];
 
-void read_file(){
+void read_file(){//reading file
     float tempA, tempB;
     int i = 0;
     while(i < 30){
@@ -27,7 +27,7 @@ void read_file(){
     }
 }
 
-void print_file(){
+void print_file(){//printing in file
     for(int j = 0; j < 3; j++){
         float q = 0;
         fprintf(fout, "For wire_length = %d\n", wire_length[j]);
@@ -35,7 +35,7 @@ void print_file(){
                 fprintf(fout, "\t Potential:%d Current:%d \n", e_potential[i], e_current[i]);
                 fprintf(fout, "\t Resist: %f \n", r[i]);
                 q += r[i];
-            }
+        }
         res[j] = q/10;
         fprintf(fout, "\n\n");
         fprintf(fout, "For wire length = %d\n", wire_length[j]);
@@ -44,13 +44,13 @@ void print_file(){
 }
 
 int main(){
-    fin = fopen("input.in", "r");
+    fin = fopen("input.in", "r");//open files
     fout = fopen("output.out", "w");
-    read_file();
-    print_file();
-    free(e_current);
+    read_file();// reading
+    print_file();// printing
+    free(e_current);//free memory dynamic massives
     free(e_potential);
-    fclose(fin);
+    fclose(fin);//close files
     fclose(fout);
     system("PAUSE");
     return 0;
