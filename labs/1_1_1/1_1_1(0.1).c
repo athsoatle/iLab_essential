@@ -40,7 +40,7 @@ void print_file(){//printing in file
         fprintf(fout, "\n\n");
         fprintf(fout, "For wire length = %d\n", wire_length[j]);
         fprintf(fout, "\t Mean value of resistance: %f \n\n", res[j]);
-        }
+    }
 }
 
 int main(){
