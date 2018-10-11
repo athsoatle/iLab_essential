@@ -1,4 +1,4 @@
-For wire_length = 20
+For wire length = 20
 	 Potential:300 Current:140 
 	 Resist: 2.142857 
 	 Potential:790 Current:370 
@@ -24,7 +24,13 @@ For wire_length = 20
 For wire length = 20
 	 Mean value of resistance: 2.137383 
 
-For wire_length = 30
+	 Accidential error of resistance: 0.027898 
+
+	 Sistematical error of resistance: 0.007000 
+
+	 Absolute error of resistance: 0.028762 
+
+For wire length = 30
 	 Potential:760 Current:235 
 	 Resist: 3.234043 
 	 Potential:1040 Current:325 
@@ -50,7 +56,13 @@ For wire_length = 30
 For wire length = 30
 	 Mean value of resistance: 3.197119 
 
-For wire_length = 50
+	 Accidential error of resistance: 0.024123 
+
+	 Sistematical error of resistance: 0.001000 
+
+	 Absolute error of resistance: 0.024144 
+
+For wire length = 50
 	 Potential:500 Current:95 
 	 Resist: 5.263158 
 	 Potential:750 Current:150 
@@ -75,4 +87,10 @@ For wire_length = 50
 
 For wire length = 50
 	 Mean value of resistance: 5.248561 
+
+	 Accidential error of resistance: 0.095015 
+
+	 Sistematical error of resistance: 0.001000 
+
+	 Absolute error of resistance: 0.095020 
 
