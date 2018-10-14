@@ -13,7 +13,7 @@ FILE *fout;
 FILE *finD;
 FILE *foutD;
 
-float **eCurrent = NULL;
+float **eCurrent = NULL;//array declaration
 float **ePotential = NULL;
 float **resists = NULL;
 float *diameters = NULL;
@@ -29,6 +29,7 @@ float observationalError[3] = { 0.007, 0.001, 0.001 };
 float observationalErrorD[1] = { 0.01 };
 float observationalErrorL[3] = { 1, 1, 1 };
 int wireLength[3] = { 200, 300, 500 };
+
 float observationalErrorV = 0.529;
 float observationalErrorA = 2.5;
 int number = 0;
@@ -47,12 +48,6 @@ void readFile() {
 		resists[j] = (float*)malloc(10 * sizeof(float));
 	}
 	while (fscanf(fin, "%f %f\n", &ePotentialTemp, &eCurrentTemp) != EOF) {
-		/*ePotential = (float**)realloc(ePotential, (i / 10 + 1) * sizeof(float*));
-		eCurrent = (float**)realloc(eCurrent, (i / 10 + 1) * sizeof(float*));
-		resists = (float**)realloc(resists, (i / 10 + 1) * sizeof(float*));
-		ePotential[i / 10] = (float*)realloc(ePotential, (i + 1) * sizeof(float));
-		eCurrent[i / 10] = (float*)realloc(eCurrent, (i + 1) * sizeof(float));
-		resists[i / 10] = (float*)realloc(resists, (i + 1) * sizeof(float));*/
 		ePotential[i / 10][i - 10 * (i / 10)] = ePotentialTemp;
 		eCurrent[i / 10][i - 10 * (i / 10)] = eCurrentTemp;
 		resists[i / 10][i - 10 * (i / 10)] = ePotentialTemp / eCurrentTemp;
@@ -153,7 +148,6 @@ void printFile() {
 	}
 	fprintf(fout, "\nFor diameter:\n\tMean value: %f\n\tStandard Deviation:%f\n\tAccidential Error:%f\n\tAbsolute Error:%f\n\n", meanValue(diameters, numberD), standardDeviation(diameters, numberD), accidentalError(diameters, numberD), absoluteError(diameters, observationalErrorD, numberD, 0));
 	for (int i = 0; i < sizeof(wireLength) / sizeof(float); i++) {
-		printf("HEROYAM SLAVA!\n");
 		fprintf(fout, "For wire length:%i\n\t", wireLength[i]);
 		fprintf(fout, "Electric Resistivity:%f\n\tAbsolute Error of Electric Resistivity:%f\n\n", eResistivity[i], absER[i]);
 	}
@@ -165,14 +159,12 @@ int main() {
 	finD = fopen("inputD.in", "r");
 	fout = fopen("output.out", "w");
 	readFile();
-	printf("%i %i\n", sizeof(meanRsLSM), sizeof(meanRsLSM)/sizeof(float*));
 	for (int i = 0; i < number / 10; i++) {
 		meanRs[i] = meanValue(resists[i], number / 3);
 		meanRsLSM[i] = leastSquaresMethod(eCurrent[i], ePotential[i], number / 3);
 		accRLSM[i] = meanSquareAccidentalError(eCurrent[i], ePotential[i], number / 3);
 		sysRLSM[i] = meanSquareSystematicError(eCurrent[i], ePotential[i], number / 3);
 		absRLSM[i] = absoluteErrorLSM(eCurrent[i], ePotential[i], number / 3);
-		printf("%f\n", meanSquareAccidentalError(eCurrent[i], ePotential[i], number / 3));
 	}
 	for (int i = 0; i < sizeof(meanRsLSM) / sizeof(float*); i++) {
 		eResistivity = (float*)realloc(eResistivity, (i + 1) * sizeof(float));
