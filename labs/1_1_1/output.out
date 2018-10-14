@@ -1,96 +1,39 @@
-For wire length = 20
-	 Potential:300 Current:140 
-	 Resist: 2.142857 
-	 Potential:790 Current:370 
-	 Resist: 2.135135 
-	 Potential:420 Current:200 
-	 Resist: 2.100000 
-	 Potential:650 Current:300 
-	 Resist: 2.166667 
-	 Potential:1150 Current:540 
-	 Resist: 2.129630 
-	 Potential:1530 Current:720 
-	 Resist: 2.125000 
-	 Potential:220 Current:100 
-	 Resist: 2.200000 
-	 Potential:480 Current:225 
-	 Resist: 2.133333 
-	 Potential:700 Current:330 
-	 Resist: 2.121212 
-	 Potential:530 Current:250 
-	 Resist: 2.120000 
+For wire length = 200
+	Mean value of Resistance:2.137383
+	Mean value of Resistance according to Least squares method:2.129730
+	LSM Accidental error:0.004263
+	LSM systematic error:0.016214
+	LSM absolute error:0.016765
+For wire length = 300
+	Mean value of Resistance:3.197119
+	Mean value of Resistance according to Least squares method:3.186793
+	LSM Accidental error:0.006662
+	LSM systematic error:0.026616
+	LSM absolute error:0.027437
+For wire length = 500
+	Mean value of Resistance:5.248561
+	Mean value of Resistance according to Least squares method:5.262582
+	LSM Accidental error:0.014472
+	LSM systematic error:0.020414
+	LSM absolute error:0.025024
 
+For diameter:
+	Mean value: 0.357000
+	Standard Deviation:0.006749
+	Accidential Error:0.002134
+	Absolute Error:0.010225
 
-For wire length = 20
-	 Mean value of resistance: 2.137383 
+For wire length:200
+	Electric Resistivity:0.001066
+	Absolute Error of Electric Resistivity:0.000032
 
-	 Accidential error of resistance: 0.027898 
+For wire length:300
+	Electric Resistivity:0.001063
+	Absolute Error of Electric Resistivity:0.000032
 
-	 Sistematical error of resistance: 0.007000 
+For wire length:500
+	Electric Resistivity:0.001054
+	Absolute Error of Electric Resistivity:0.000031
 
-	 Absolute error of resistance: 0.028762 
-
-For wire length = 30
-	 Potential:760 Current:235 
-	 Resist: 3.234043 
-	 Potential:1040 Current:325 
-	 Resist: 3.200000 
-	 Potential:320 Current:100 
-	 Resist: 3.200000 
-	 Potential:480 Current:150 
-	 Resist: 3.200000 
-	 Potential:1500 Current:475 
-	 Resist: 3.157895 
-	 Potential:1750 Current:550 
-	 Resist: 3.181818 
-	 Potential:1280 Current:400 
-	 Resist: 3.200000 
-	 Potential:1120 Current:350 
-	 Resist: 3.200000 
-	 Potential:950 Current:300 
-	 Resist: 3.166667 
-	 Potential:630 Current:195 
-	 Resist: 3.230769 
-
-
-For wire length = 30
-	 Mean value of resistance: 3.197119 
-
-	 Accidential error of resistance: 0.024123 
-
-	 Sistematical error of resistance: 0.001000 
-
-	 Absolute error of resistance: 0.024144 
-
-For wire length = 50
-	 Potential:500 Current:95 
-	 Resist: 5.263158 
-	 Potential:750 Current:150 
-	 Resist: 5.000000 
-	 Potential:1050 Current:200 
-	 Resist: 5.250000 
-	 Potential:1320 Current:250 
-	 Resist: 5.280000 
-	 Potential:1630 Current:305 
-	 Resist: 5.344262 
-	 Potential:1870 Current:350 
-	 Resist: 5.342857 
-	 Potential:2150 Current:410 
-	 Resist: 5.243902 
-	 Potential:2630 Current:500 
-	 Resist: 5.260000 
-	 Potential:2990 Current:570 
-	 Resist: 5.245614 
-	 Potential:3390 Current:645 
-	 Resist: 5.255814 
-
-
-For wire length = 50
-	 Mean value of resistance: 5.248561 
-
-	 Accidential error of resistance: 0.095015 
-
-	 Sistematical error of resistance: 0.001000 
-
-	 Absolute error of resistance: 0.095020 
-
+		Conclusion:
+			Electric Resistivity = 1.060923 +- 0.031589 Ohm*Centimetre
