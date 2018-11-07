@@ -129,32 +129,45 @@ float meanSquareAccidentalError(float* valueArrayX, float* valueArrayY, int numb
 	for (int i = 0; i < number; i++) {
 		valueArraySqY[i] = pow(valueArrayY[i], 2);
 	}
-	return(sqrt((pow(number, -1)) * (meanValue(valueArraySqY, number) / meanValue(valueArraySqX, number) - pow(leastSquaresMethod(valueArrayX, valueArrayY, number), 2))));
+	return(sqrt((pow(number, -1)) * (meanValue(valueArraySqY, number) / 
+					 meanValue(valueArraySqX, number) - 
+					 pow(leastSquaresMethod(valueArrayX, valueArrayY, number), 2))));
 }
 
 float meanSquareSystematicError(float* valueArrayX, float* valueArrayY, int number) {/*systematic error for least squares method*/
-	return(leastSquaresMethod(valueArrayX, valueArrayY, number) * sqrt(pow((observationalErrorV / fMaxArr(valueArrayY, number)), 2) + pow((observationalErrorA / fMaxArr(valueArrayX, number)), 2)));
+	return(leastSquaresMethod(valueArrayX, valueArrayY, number) * 
+	       sqrt(pow((observationalErrorV / fMaxArr(valueArrayY, number)), 2) + 
+		    pow((observationalErrorA / fMaxArr(valueArrayX, number)), 2)));
 }
 
 float absoluteErrorLSM(float* valueArrayX, float* valueArrayY, int number) {/*absolute error for least squares method*/
-	return(sqrt(pow(meanSquareAccidentalError(valueArrayX, valueArrayY, number), 2) + pow(meanSquareSystematicError(valueArrayX, valueArrayY, number), 2)));
+	return(sqrt(pow(meanSquareAccidentalError(valueArrayX, valueArrayY, number), 2) + 
+		    pow(meanSquareSystematicError(valueArrayX, valueArrayY, number), 2)));
 }
 
 float absoluteErrorResistivity(int index) {/*accidential error for electric resistivity*/
-	return(eResistivity[index] * sqrt(pow(absRLSM[index] / meanRsLSM[index], 2) + pow(absoluteError(diameters, observationalErrorD, numberD, 0) / meanValue(diameters, numberD), 2) + pow(observationalErrorL[index]/wireLength[index], 2)));
+	return(eResistivity[index] * sqrt(pow(absRLSM[index] / meanRsLSM[index], 2) + 
+					  pow(absoluteError(diameters, observationalErrorD, numberD, 0) / 
+					      meanValue(diameters, numberD), 2) + 
+					  pow(observationalErrorL[index]/wireLength[index], 2)));
 }
 
 void printFile() {/*printing data in file*/
 	for (int i = 0; i < sizeof(wireLength) / sizeof(float); i++) {
 		fprintf(fout, "For wire length = %i\n", wireLength[i]);
-		fprintf(fout, "\tMean value of Resistance:%f\n\tMean value of Resistance according to Least squares method:%f\n\tLSM Accidental error:%f\n\tLSM systematic error:%f\n\tLSM absolute error:%f\n", meanRs[i], meanRsLSM[i], accRLSM[i], sysRLSM[i], absRLSM[i]);
+		fprintf(fout, "\tMean value of Resistance:%f\n\tMean value of Resistance according to Least squares method:%f\n\tLSM Accidental error:%f\n\tLSM systematic error:%f\n\tLSM absolute error:%f\n",
+			meanRs[i], meanRsLSM[i], accRLSM[i], sysRLSM[i], absRLSM[i]);
 	}
-	fprintf(fout, "\n\tDiameter: %f\n\tStandard Deviation:%f\n\tAccidential Error:%f\n\tAbsolute Error:%f\n\n", meanValue(diameters, numberD), standardDeviation(diameters, numberD), accidentalError(diameters, numberD), absoluteError(diameters, observationalErrorD, numberD, 0));
+	fprintf(fout, "\n\tDiameter: %f\n\tStandard Deviation:%f\n\tAccidential Error:%f\n\tAbsolute Error:%f\n\n", 
+		meanValue(diameters, numberD), standardDeviation(diameters, numberD), 
+		accidentalError(diameters, numberD), absoluteError(diameters, observationalErrorD, numberD, 0));
 	for (int i = 0; i < sizeof(wireLength) / sizeof(float); i++) {
 		fprintf(fout, "For wire length:%i\n\t", wireLength[i]);
-		fprintf(fout, "Electric Resistivity:%f\n\tAbsolute Error of Electric Resistivity:%f\n\n", eResistivity[i], absER[i]);
+		fprintf(fout, "Electric Resistivity:%f\n\tAbsolute Error of Electric Resistivity:%f\n\n", 
+			eResistivity[i], absER[i]);
 	}
-	fprintf(fout, "\t\tConclusion:\n\t\t\tElectric Resistivity = %f +- %f Ohm*Centimetre", (meanValue(eResistivity, numberER) * 1000), (meanValue(absER, numberER) * 1000));
+	fprintf(fout, "\t\tConclusion:\n\t\t\tElectric Resistivity = %f +- %f Ohm*Centimetre",
+		(meanValue(eResistivity, numberER) * 1000), (meanValue(absER, numberER) * 1000));
 }
 
 int main() {
