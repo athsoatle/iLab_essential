@@ -75,9 +75,9 @@ int main(int argc, char**argv) {
         ans.push_back(make_pair(convertedText[i], textArray[i]));
 	}
 	sortByBegin();
-    printFile();
-    sortByEnds();
-    printFile();
+	printFile();
+	sortByEnds();
+	printFile();
 	system("PAUSE");
 	return 0;
 }
