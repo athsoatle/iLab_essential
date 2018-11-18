@@ -67,6 +67,7 @@ string stringConverter(string str) {
 	for (unsigned int i = 0; i < str.length(); i++) {
 		if (isupper(str[i]))	strRet.push_back(tolower(str[i]));
 		else if (islower(str[i]))	strRet.push_back(str[i]);
+		else if (str[i] == 'ÿ')	strRet.push_back(str[i]);
 	}
 	return strRet;
 }
