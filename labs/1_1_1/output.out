@@ -1,21 +1,21 @@
 For wire length = 200
 	Mean value of Resistance:2.137383
 	Mean value of Resistance according to Least squares method:2.129730
-	LSM Accidental error:0.004263
-	LSM systematic error:0.016214
-	LSM absolute error:0.016765
+	LSM Accidental error:0.004259
+	LSM systematic error:0.008337
+	LSM absolute error:0.009362
 For wire length = 300
 	Mean value of Resistance:3.197119
 	Mean value of Resistance according to Least squares method:3.186793
-	LSM Accidental error:0.006662
-	LSM systematic error:0.026616
-	LSM absolute error:0.027437
+	LSM Accidental error:0.006663
+	LSM systematic error:0.010095
+	LSM absolute error:0.012096
 For wire length = 500
 	Mean value of Resistance:5.248561
 	Mean value of Resistance according to Least squares method:5.262582
 	LSM Accidental error:0.014472
-	LSM systematic error:0.020414
-	LSM absolute error:0.025024
+	LSM systematic error:0.005804
+	LSM absolute error:0.015593
 
 	Diameter: 0.357000
 	Standard Deviation:0.006749
@@ -24,15 +24,15 @@ For wire length = 500
 
 For wire length:200
 	Electric Resistivity:0.001066
-	Absolute Error of Electric Resistivity:0.000032
+	Absolute Error of Electric Resistivity:0.000031
 
 For wire length:300
 	Electric Resistivity:0.001063
-	Absolute Error of Electric Resistivity:0.000032
+	Absolute Error of Electric Resistivity:0.000031
 
 For wire length:500
 	Electric Resistivity:0.001054
-	Absolute Error of Electric Resistivity:0.000031
+	Absolute Error of Electric Resistivity:0.000030
 
 		Conclusion:
-			Electric Resistivity = 1.060923 +- 0.031589 Ohm*Centimetre
+			Electric Resistivity = 1.060923 +- 0.030893 Ohm*Centimetre

@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include "extraMeasurements.h"
 
 FILE* fin; /*file data reservation*/
 FILE* fout;
@@ -21,7 +22,7 @@ float** resists = NULL;     /*contain electric resistance measurements*/
 float* diameters = NULL;    /*contain diameter measurements*/
 float* eResistivity = NULL; /*contain electric resistivity measurements*/
 float* absER =
-    NULL;        /*contain asolute errors of electric resistivity measurements*/
+    NULL;        /*contain absolute errors of electric resistivity measurements*/
 float meanRs[3]; /*contain mean values of electric resistance measurements*/
 float
     meanRsLSM[3]; /*contain mean values of electric resistance measurements by
@@ -42,8 +43,6 @@ float observationalErrorL[3] = {1, 1, 1};
 int wireLength[3] = {200, 300, 500}; /*lengths of wire used in research*/
 
 /*essential variables*/
-float observationalErrorV = 0.529; /*observational errors for used instruments*/
-float observationalErrorA = 2.5;
 int number = 0; /*will be filled with length of dynamic arrays*/
 int numberD = 0;
 int numberER = 0;
@@ -75,97 +74,6 @@ void readFile() { /*reading file*/
   }
   number = i;
   numberD = j;
-}
-
-float amount(float* valueArray,
-             int number) { /*sum of all elements of the array*/
-  float quantity = 0;
-  for (int i = 0; i < number; i++) {
-    quantity += valueArray[i];
-  }
-  return quantity;
-}
-
-float meanValue(float* valueArray,
-                int number) { /*mean value of all elements of the array*/
-  return (amount(valueArray, number) / number);
-}
-
-float fMaxArr(float* valueArray,
-              int number) { /*maximum element from all elements of the array*/
-  float temp = 0;
-  for (int i = 1; i < number; i++) {
-    temp = max(valueArray[i], valueArray[i - 1]);
-  }
-  return temp;
-}
-
-float standardDeviation(float* valueArray, int number) { /*standard deviation*/
-  float amount = 0;
-  for (int i = 0; i < number; i++) {
-    amount += pow((valueArray[i] - meanValue(valueArray, number)), 2);
-  }
-  return (sqrt(amount / (number - 1)));
-}
-
-float accidentalError(float* valueArray, int number) { /*accidential error*/
-  return (standardDeviation(valueArray, number) / sqrt(number));
-}
-
-float absoluteError(float* valueArray, float* observationalError, int number,
-                    int index) { /*absolute error*/
-  return (sqrt(pow(accidentalError(valueArray, number), 2) +
-               pow(observationalError[index], 2)));
-}
-
-float leastSquaresMethod(float* valueArrayX, float* valueArrayY,
-                         int number) { /*least squares method realization*/
-  float* valueArrayXY;
-  float* valueArraySqX;
-  valueArrayXY = (float*)malloc(number * sizeof(float));
-  valueArraySqX = (float*)malloc(number * sizeof(float));
-  for (int i = 0; i < number; i++) {
-    valueArrayXY[i] = valueArrayX[i] * valueArrayY[i];
-  }
-  for (int i = 0; i < number; i++) {
-    valueArraySqX[i] = pow(valueArrayX[i], 2);
-  }
-  return (meanValue(valueArrayXY, number) / meanValue(valueArraySqX, number));
-  free(valueArrayXY);
-}
-
-float meanSquareAccidentalError(
-    float* valueArrayX, float* valueArrayY,
-    int number) { /*accidential error for least squares method*/
-  float* valueArraySqX;
-  float* valueArraySqY;
-  valueArraySqX = (float*)malloc(number * sizeof(float));
-  valueArraySqY = (float*)malloc(number * sizeof(float));
-  for (int i = 0; i < number; i++) {
-    valueArraySqX[i] = pow(valueArrayX[i], 2);
-  }
-  for (int i = 0; i < number; i++) {
-    valueArraySqY[i] = pow(valueArrayY[i], 2);
-  }
-  return (sqrt(
-      (pow(number, -1)) *
-      (meanValue(valueArraySqY, number) / meanValue(valueArraySqX, number) -
-       pow(leastSquaresMethod(valueArrayX, valueArrayY, number), 2))));
-}
-
-float meanSquareSystematicError(
-    float* valueArrayX, float* valueArrayY,
-    int number) { /*systematic error for least squares method*/
-  return (leastSquaresMethod(valueArrayX, valueArrayY, number) *
-          sqrt(pow((observationalErrorV / fMaxArr(valueArrayY, number)), 2) +
-               pow((observationalErrorA / fMaxArr(valueArrayX, number)), 2)));
-}
-
-float absoluteErrorLSM(float* valueArrayX, float* valueArrayY,
-                       int number) { /*absolute error for least squares method*/
-  return (sqrt(
-      pow(meanSquareAccidentalError(valueArrayX, valueArrayY, number), 2) +
-      pow(meanSquareSystematicError(valueArrayX, valueArrayY, number), 2)));
 }
 
 float absoluteErrorResistivity(
@@ -212,14 +120,16 @@ int main() {
   finD = fopen("inputD.in", "r");
   fout = fopen("output.out", "w");
   readFile(); /*file reading*/
+  float observationalErrorV = 0.529; /*observational errors for used instruments*/
+  float observationalErrorA = 2.5;
   for (int i = 0; i < number / 10; i++) {
     meanRs[i] = meanValue(resists[i], number / 3); /*filling an arrays*/
     meanRsLSM[i] = leastSquaresMethod(eCurrent[i], ePotential[i], number / 3);
     accRLSM[i] =
         meanSquareAccidentalError(eCurrent[i], ePotential[i], number / 3);
     sysRLSM[i] =
-        meanSquareSystematicError(eCurrent[i], ePotential[i], number / 3);
-    absRLSM[i] = absoluteErrorLSM(eCurrent[i], ePotential[i], number / 3);
+        meanSquareSystematicError(eCurrent[i], ePotential[i], number / 3, observationalErrorA, observationalErrorV);
+    absRLSM[i] = absoluteErrorLSM(eCurrent[i], ePotential[i], number / 3, observationalErrorA, observationalErrorV);
   }
   for (int i = 0; i < sizeof(meanRsLSM) / sizeof(float*); i++) {
     eResistivity = (float*)realloc(
